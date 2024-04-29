@@ -16,6 +16,7 @@ Future<void> main() async
         appId: '1:832713560007:android:8cd12b1b74fba1478953e2',
         messagingSenderId: '832713560007',
         projectId: 'be-right-there-f7e78',
+        databaseURL: 'https://be-right-there-f7e78-default-rtdb.asia-southeast1.firebasedatabase.app',
         storageBucket: 'gs://be-right-there-f7e78.appspot.com',
       )
   );
