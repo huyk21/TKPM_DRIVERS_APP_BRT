@@ -49,7 +49,7 @@ class _NewTripPageState extends State<NewTripPage>
   {
     if(carMarkerIcon == null)
     {
-      ImageConfiguration configuration = createLocalImageConfiguration(context, size: Size(2, 2));
+      ImageConfiguration configuration = createLocalImageConfiguration(context, size: const Size(2, 2));
 
       BitmapDescriptor.fromAssetImage(configuration, "assets/images/tracking.png")
           .then((valueIcon)
@@ -185,7 +185,7 @@ class _NewTripPageState extends State<NewTripPage>
 
   getLiveLocationUpdatesOfDriver()
   {
-    LatLng lastPositionLatLng = LatLng(0, 0);
+    LatLng lastPositionLatLng = const LatLng(0, 0);
 
     positionStreamNewTripPage = Geolocator.getPositionStream().listen((Position positionDriver)
     {
@@ -342,7 +342,7 @@ class _NewTripPageState extends State<NewTripPage>
       "driverName": driverName,
       "driverPhone": driverPhone,
       "driverPhoto": driverPhoto,
-      "carDetails": carColor + " - " + carModel + " - " + carNumber,
+      "carDetails": "$carColor - $carModel - $carNumber",
     };
 
     Map<String, dynamic> driverCurrentLocation =
@@ -440,7 +440,7 @@ class _NewTripPageState extends State<NewTripPage>
                     //trip duration
                     Center(
                       child: Text(
-                        durationText + " - " + distanceText,
+                        "$durationText - $distanceText",
                         style: const TextStyle(
                           color: Colors.green,
                           fontSize: 15,

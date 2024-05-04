@@ -22,8 +22,6 @@ class _LoginScreenState extends State<LoginScreen>
   TextEditingController passwordTextEditingController = TextEditingController();
   CommonMethods cMethods = CommonMethods();
 
-
-
   checkIfNetworkIsAvailable()
   {
     cMethods.checkConnectivity(context);
@@ -36,11 +34,11 @@ class _LoginScreenState extends State<LoginScreen>
 
     if(!emailTextEditingController.text.contains("@"))
     {
-      cMethods.displaySnackBar("please write valid email.", context);
+      cMethods.displaySnackBar("Please enter a valid email.", context);
     }
     else if(passwordTextEditingController.text.trim().length < 5)
     {
-      cMethods.displaySnackBar("your password must be atleast 6 or more characters.", context);
+      cMethods.displaySnackBar("Your password must be atleast 6 or more characters.", context);
     }
     else
     {
@@ -53,7 +51,7 @@ class _LoginScreenState extends State<LoginScreen>
     showDialog(
       context: context,
       barrierDismissible: false,
-      builder: (BuildContext context) => LoadingDialog(messageText: "Allowing you to Login..."),
+      builder: (BuildContext context) => LoadingDialog(messageText: "Allowing you to login..."),
     );
 
     final User? userFirebase = (
@@ -80,18 +78,18 @@ class _LoginScreenState extends State<LoginScreen>
           if((snap.snapshot.value as Map)["blockStatus"] == "no")
           {
             //userName = (snap.snapshot.value as Map)["name"];
-            Navigator.push(context, MaterialPageRoute(builder: (c)=> Dashboard()));
+            Navigator.push(context, MaterialPageRoute(builder: (c)=> const Dashboard()));
           }
           else
           {
             FirebaseAuth.instance.signOut();
-            cMethods.displaySnackBar("you are blocked. Contact admin: alizeb875@gmail.com", context);
+            cMethods.displaySnackBar("You are blocked. Contact us at: BeRightThere@gmail.com", context);
           }
         }
         else
         {
           FirebaseAuth.instance.signOut();
-          cMethods.displaySnackBar("your record do not exists as a Driver.", context);
+          cMethods.displaySnackBar("Your record do not exist as a Driver in the system", context);
         }
       });
     }
@@ -111,7 +109,7 @@ class _LoginScreenState extends State<LoginScreen>
               ),
 
               Image.asset(
-                  "assets/images/uberexec.png",
+                  "assets/images/BRT_logo.jpeg",
                 width: 220,
               ),
 
@@ -137,7 +135,7 @@ class _LoginScreenState extends State<LoginScreen>
                       controller: emailTextEditingController,
                       keyboardType: TextInputType.emailAddress,
                       decoration: const InputDecoration(
-                        labelText: "your Email",
+                        labelText: "Your Email",
                         labelStyle: TextStyle(
                           fontSize: 14,
                         ),
@@ -155,7 +153,7 @@ class _LoginScreenState extends State<LoginScreen>
                       obscureText: true,
                       keyboardType: TextInputType.text,
                       decoration: const InputDecoration(
-                        labelText: "your Password",
+                        labelText: "Your Password",
                         labelStyle: TextStyle(
                           fontSize: 14,
                         ),
@@ -192,7 +190,7 @@ class _LoginScreenState extends State<LoginScreen>
               TextButton(
                 onPressed: ()
                 {
-                  Navigator.push(context, MaterialPageRoute(builder: (c)=> SignUpScreen()));
+                  Navigator.push(context, MaterialPageRoute(builder: (c)=> const SignUpScreen()));
                 },
                 child: const Text(
                   "Don\'t have an Account? Register Here",
