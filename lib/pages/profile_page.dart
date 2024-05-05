@@ -26,7 +26,7 @@ class _ProfilePageState extends State<ProfilePage>
       nameTextEditingController.text = driverName;
       phoneTextEditingController.text = driverPhone;
       emailTextEditingController.text = FirebaseAuth.instance.currentUser!.email.toString();
-      carTextEditingController.text = "$carNumber - $carColor - $carModel";
+      carTextEditingController.text = carNumber + " - " + carColor + " - " + carModel;
     });
   }
 
@@ -176,7 +176,7 @@ class _ProfilePageState extends State<ProfilePage>
                 onPressed: ()
                 {
                   FirebaseAuth.instance.signOut();
-                  Navigator.push(context, MaterialPageRoute(builder: (c)=> const LoginScreen()));
+                  Navigator.push(context, MaterialPageRoute(builder: (c)=> LoginScreen()));
                 },
                 style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.pink,
